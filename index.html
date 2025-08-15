@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hadjer El Arabi Tolhi - CV</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<style>
+:root {
+    --primary: #6c63ff;
+    --secondary: #4f46e5;
+    --accent: #ff6f61;
+    --dark: #1d1d2e;
+    --light: #f8f9fa;
+    --highlight: #f0f4ff;
+    --bg: var(--light);
+    --text: var(--dark);
+    --section-bg: white;
+    --border: rgba(108, 99, 255, 0.2);
+}
+
+/* Mode sombre */
+.dark-mode {
+    --bg: #121212;
+    --text: #e0e0e0;
+    --section-bg: #1e1e1e;
+    --highlight: #1a1a2b;
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    position: relative;
+}
+
+/* Canvas de particules */
+#particles-js {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+}
+
+/* Conteneur */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+/* En-tête */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30px;
+    border-bottom: 2px solid var(--primary);
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.profile-img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary);
+    box-shadow: 0 10px 25px rgba(108, 99, 255, 0.2);
+}
+
+.typing {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid var(--accent);
+    animation: typing 3s steps(25), blink 0.7s infinite;
+}
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+.profile-text h1 {
+    font-size: 1.8rem;
+    color: var(--primary);
+    font-weight: 600;
+    margin: 0;
+}
+.profile-text h2 {
+    font-size: 1.1rem;
+    color: var(--secondary);
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+/* Contact */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: right;
+}
+.contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    font-size: 0.95rem;
+}
+.contact-item i {
+    color: var(--primary);
+    width: 20px;
+    text-align: center;
+}
+
+/* Sections */
+.section {
+    background: var(--section-bg);
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    position: relative;
+    border: 2px solid transparent;
+}
+.section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    border-radius: 18px;
+    background: linear-gradient(45deg, var(--primary), var(--accent), var(--secondary));
+    background-size: 300% 300%;
+    animation: gradientMove 5s infinite linear;
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: var(--secondary);
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 8px;
+    font-weight: 600;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+/* Grille de compétences */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+.skills-grid h4 {
+    color: var(--secondary);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+.skills-grid ul {
+    margin-left: 10px;
+    margin-bottom: 15px;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+.skills-grid ul li {
+    margin-bottom: 6px;
+}
+
+/* Skills bars */
+.skill-item {
+    margin-bottom: 15px;
+}
+.skill-name {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+}
+.skill-bar {
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: background 0.3s ease;
+}
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 4px;
+    width: 0;
+    animation: fillBar 2s forwards;
+}
+@keyframes fillBar {
+    from { width: 0; }
+}
+
+/* Boutons */
+.cta-button {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    margin: 0 10px;
+}
+.cta-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+}
+
+/* Bouton thème */
+.theme-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
+    z-index: 100;
+    transition: transform 0.3s ease;
+}
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+</style>
+</head>
+<body>
+
+<div id="particles-js"></div>
+<button id="theme-toggle" class="theme-toggle"><i class="fas fa-moon"></i></button>
+
+<div class="container" id="cv-content">
+    <header>
+        <div class="profile">
+            <img src="photo_2025-08-15_01-25-34.jpg" alt="Hadjer El Arabi Tolhi" class="profile-img" />
+            <div class="profile-text">
+                <h1 class="typing">Hadjer El Arabi Tolhi</h1>
+                <h2>Étudiante en Master 1 Informatique & Créative</h2>
+            </div>
+        </div>
+        <div class="contact-info">
+            <div class="contact-item"><i class="fas fa-phone"></i><span>0666 90 80 30</span></div>
+            <div class="contact-item"><i class="fas fa-envelope"></i><span>elarbiTolhihadjer@gmail.com</span></div>
+            <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Oran, Adll ahmad zabana Algérie</span></div>
+        </div>
+    </header>
+
+    <!-- Profil adapté pour l'offre Assistante -->
+    <div class="section">
+        <h3 class="section-title">Profil</h3>
+        <p>Jeune assistante dynamique et sérieuse, à l'aise avec les outils informatiques (Word, Excel, Internet). Polyvalente, organisée et motivée, je peux gérer l'accueil, les impressions, les scans et l'assistance basique dans un environnement professionnel. Résidant à Adll ahmad zabana, je suis disponible pour rejoindre votre équipe.</p>
+    </div>
+
+    <!-- Compétences mises à jour pour l'offre -->
+    <div class="section">
+        <h3 class="section-title">Compétences</h3>
+        <div class="skills-grid">
+            <div>
+                <h4><i class="fas fa-laptop-code"></i> Informatique & Outils</h4>
+                <ul>
+                    <li>Microsoft Office (Word, Excel, PowerPoint)</li>
+                    <li>Navigation Internet et gestion des emails</li>
+                    <li>Gestion et organisation de documents</li>
+                </ul>
+            </div>
+   <!-- Design -->
+            <div>
+                <h4><i class="fas fa-palette"></i> Design & Création</h4>
+                <div class="skill-item">
+                    <div class="skill-name">Canva <span>80%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width:80%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Figma (bases) <span>60%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width:60%"></div></div>
+                </div>
+                <p style="margin-top: 10px; font-size: 0.95rem;"><i class="fas fa-film"></i> Montage vidéo (personnel)</p>
+            </div>
+            <div>
+                <h4><i class="fas fa-hand-holding"></i> Polyvalence administrative</h4>
+                <ul>
+                    <li>Accueil et orientation des visiteurs</li>
+                    <li>Impressions, scans et photocopies</li>
+                    <li>Soutien administratif basique</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4><i class="fas fa-tasks"></i> Organisation & Gestion</h4>
+                <ul>
+                    <li>Classement et suivi des dossiers</li>
+                    <li>Priorisation des tâches</li>
+                    <li>Respect des délais et rigueur</li>
+                </ul>
+            </div>
+              <!-- Développement -->
+            <div>
+                <h4><i class="fas fa-code"></i> Développement Web</h4>
+                <ul>
+                    <li>HTML, CSS, JavaScript (bases)</li>
+                    <li>Création de sites web simples</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Expérience adaptée -->
+    <div class="section">
+        <h3 class="section-title">Expérience</h3>
+        <p><strong>Fév - Avr 2025</strong> — Stagiaire en administration<br>
+        Mairie d'Oran Senia | Contrat d'apprentissage<br>
+        Accueil des visiteurs, gestion des documents, impressions et scans. Développement du sens de l'organisation et polyvalence administrative.</p>
+    </div>
+
+    <!-- Formation -->
+    <div class="section">
+        <h3 class="section-title">Formation</h3>
+        <p><strong>2025 - En cours</strong> — Master 1 Informatique (SID), USTO-MB, Oran</p>
+        <p><strong>2022 - 2025</strong> — Licence Informatique (ISIL), USTO-MB, Oran</p>
+        <p><strong>2021</strong> — Baccalauréat Mathématiques, Moyenne : 15/20</p>
+    </div>
+
+    <!-- Centres d'intérêt -->
+    <div class="section">
+        <h3 class="section-title">Centres d'intérêt</h3>
+        <ul style="display: flex; flex-wrap: wrap; gap: 12px; list-style: none;">
+            <li style="background: var(--highlight); padding: 6px 12px; border-radius: 20px; font-size: 0.9rem;"><i class="fas fa-ad"></i> Création de publicités</li>
+            <li style="background: var(--highlight); padding: 6px 12px; border-radius: 20px; font-size: 0.9rem;"><i class="fas fa-cogs"></i> Bricolage & montage</li>
+            <li style="background: var(--highlight); padding: 6px 12px; border-radius: 20px; font-size: 0.9rem;"><i class="fas fa-paint-brush"></i> Design manuel</li>
+            <li style="background: var(--highlight); padding: 6px 12px; border-radius: 20px; font-size: 0.9rem;"><i class="fas fa-microchip"></i> Nouvelles technologies</li>
+        </ul>
+    </div>
+
+    <!-- Expérience -->
+<div class="section">
+    <h3 class="section-title">Expérience Créative</h3>
+
+    <!-- Projet de fin d'études -->
+    <div style="margin-bottom: 25px;">
+        <p>
+            <strong>2025</strong> — 
+            <span style="color: var(--secondary); font-weight: 600;">Projet de Fin d'Études : Création Vidéo et Application Web</span><br>
+            <em>Projet personnel et universitaire — Portfolio & Application “Appart Hôtel Ryadi”</em>
+        </p>
+        <ul style="margin-top: 10px; padding-left: 20px; font-size: 0.95rem; color: var(--text);">
+            
+            <li>Création de maquettes et d’interfaces graphiques sur <strong>Canva</strong> pour le projet final.</li>
+            <li>Développement d’une application web pour la réservation d’Appart Hôtel, incluant gestion des chambres et calcul des coûts.</li>
+            <li>Application pratique des compétences en design numérique et expérience utilisateur (UI/UX).</li>
+        </ul>
+        
+        
+        <div style="margin-top: 10px; font-size: 0.9rem; color: var(--primary); font-weight: 500;">
+            <i class="fas fa-hashtag"></i> Design numérique • Montage vidéo • Canva • Application web • UI/UX
+        </div>
+    </div>
+
+    <!-- Projets personnels supplémentaires -->
+    <div>
+        <p>
+            <strong>2024 - 2025</strong> — 
+            <span style="color: var(--secondary); font-weight: 600;">Projets Personnels en Création Visuelle</span>
+        </p>
+        <ul style="margin-top: 10px; padding-left: 20px; font-size: 0.95rem; color: var(--text);">
+            <li>Conception de vidéos pédagogiques et tutoriels pour un ingénieur en agriculture (contenu visuel et montage).</li>
+            <li>Exploration et expérimentation de techniques de montage vidéo et design graphique.</li>
+        </ul>
+        <div style="margin-top: 10px; font-size: 0.9rem; color: var(--primary); font-weight: 500;">
+            <i class="fas fa-folder-open"></i> Design numérique • Montage vidéo • Canva • Autodidacte
+        </div>
+    </div>
+</div>
+ <div style="margin-top: 10px; font-size: 0.95rem; font-weight: 500;">
+            <i class="fas fa-link"></i> Voir le projet : 
+            <a href="https://drive.google.com/drive/folders/1rlDlb199GUB_VuEn_kuBNhkoM0fji5eS?usp=drive_link" target="_blank" style="color: var(--primary); text-decoration: underline;">Appart Hôtel Ryadi</a>
+            
+        </div>
+
+    <!-- Langues -->
+    <div class="section">
+        <h3 class="section-title">Langues</h3>
+        <div class="skill-item">
+            <div class="skill-name">🇫🇷 Français <span>75%</span></div>
+            <div class="skill-bar"><div class="skill-progress" style="width:75%"></div></div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-name">🇬🇧 Anglais <span>45%</span></div>
+            <div class="skill-bar"><div class="skill-progress" style="width:45%"></div></div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-name">🇩🇿 Arabe <span>100%</span></div>
+            <div class="skill-bar"><div class="skill-progress" style="width:100%"></div></div>
+        </div>
+    </div>
+
+   
+
+    <!-- Boutons de contact -->
+    <div style="text-align:center; margin:30px 0;">
+        <a href="mailto:myacine33@gmail.com" class="cta-button"><i class="fas fa-envelope"></i> Postuler par Email</a>
+        <a href="tel:+213666908030" class="cta-button"><i class="fas fa-phone-alt"></i> Appeler</a>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+particlesJS.load('particles-js', 'https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js/demo/particles.json', function() {
+    console.log('Particles.js loaded');
+});
+
+// Thème sombre/clair
+document.getElementById('theme-toggle').addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const icon = document.querySelector('#theme-toggle i');
+    icon.className = document.body.classList.contains('dark-mode') ? 'fas fa-sun' : 'fas fa-moon';
+});
+</script>
+
+</body>
+</html>
